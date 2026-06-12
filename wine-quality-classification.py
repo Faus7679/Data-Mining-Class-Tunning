@@ -31,10 +31,13 @@ from sklearn.metrics import (
     auc,
     accuracy_score,
 )
-from imblearn.over_sampling import SMOTE
+
+try:
+    from imblearn.over_sampling import SMOTE
+except ImportError:
+    SMOTE = None
 
 warnings.filterwarnings('ignore')
-
 
 def load_dataset() -> pd.DataFrame:
     data_paths = [
